@@ -9,7 +9,7 @@ angular.module('code-cafe').controller("code-cafe-ctrl", function($scope, $http)
     var totalPages = 15;
     //Actually there 1347 pages But we are unable to load that many pages at time. So i am using first 15 pages. 
     for (var page = 1; page < totalPages; page++) {
-        $http.get("http://hackerearth.0x10.info/api/ctz_coders?type=json&query=list_submissions&page=" + page)
+        $http.get("https://hackerearth.0x10.info/api/ctz_coders?type=json&query=list_submissions&page=" + page)
             .then(function(response) {
                 if (response.status === 200) {
                     codeCafeDAOObj.insertWebsites(response.data.websites);

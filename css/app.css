@@ -1,0 +1,31 @@
+.code-cafe {
+    font-size: 2.5em;
+    color: #00C7A3;
+}
+
+.qoutation {
+    color: #888580;
+    font-size: 1.2em;
+}
+
+.pagenationContainer {
+    bottom: 0px;
+    position: fixed;
+    background-color: #e5e6ed;
+    width: 100%;
+}
+
+.filterContainer {
+    float: right;
+    position: fixed;
+    right: 0;
+}
+
+.headerText {
+    color: #00C7A3;
+}
+
+.paginatationList {
+    margin-left: 20%;
+    margin-right: 20%;
+}

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="external/bootstrap.min.css" rel="stylesheet">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.3/highlight.min.js"></script>
+    <script src="external/angular.js"></script>
+    <script src="external/ui-bootstrap-tpls-2.1.4.js"></script>
+    <script src="external/angular-highlightjs.min.js"></script>
+    <script src="js/codeCafeDAO.js"></script>
+    <script src="js/app.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" type="text/css" href="css/app.css">
+    <title>Code cafe</title>
+</head>
+
+<body ng-app="code-cafe" ng-controller="code-cafe-ctrl">
+    <div class="container">
+        <div class="jumbotron">
+            <div><span class="code-cafe">Code Cafe</span>
+                <span class="qoutation"> - Code hub with stats.</span></div>
+        </div>
+    </div>
+    <div class="col-xs-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4><strong class="headerText">Statical Analysis</strong></h4>
+            </div>
+            <div class="panel-body">
+                <strong>Top 5 Languages used:</strong>
+                <ul class="list-group">
+                    <li class="list-group-item" ng-repeat="language in languages"><strong>{{language.language}} : &nbsp;&nbsp;</strong><span>{{language.total}}</span></li>
+                </ul>
+                <strong>Top 2 Submissions attempted:</strong>
+                <ul class="list-group">
+                    <li class="list-group-item" ng-repeat="submission in topSubmissions"><strong>{{submission.title}} : &nbsp;&nbsp;</strong><span>{{submission.total}}</span></li>
+                </ul>
+                <strong>Number of submissions By Level:</strong>
+                <ul class="list-group">
+                    <li class="list-group-item" ng-repeat="submission in submissionByLevel"><strong>{{submission.level}} : &nbsp;&nbsp;</strong><span>{{submission.total}}</span></li>
+                </ul>
+                <strong>Number of submissions By Level:</strong> {{totalSubmissionsCount}}
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-6">
+        <div class="panel panel-default" ng-repeat="website in websites">
+
+            <div class="panel-heading">
+                <h4><strong class="headerText">{{website.title}}</strong></h4>
+            </div>
+            <div class="panel-body">
+                <div class="well"><strong>Submission Status:</strong> {{website.compiler_status}}</div>
+                <div class="well"><strong>Language:</strong> {{website.language}}</div>
+                <div hljs source="website.source_code">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-3 filterContainer">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4><strong class="headerText">Filter By Status</strong></h4>
+            </div>
+            <div class="panel-body">
+                <div class="checkbox">
+                    <label><input type="checkbox" value="" ng-model="accepted" uib-btn-checkbox>Accepted</label>
+                </div>
+                <div class="checkbox">
+                    <label><input type="checkbox" value="" ng-model="skipped" uib-btn-checkbox>Skipped</label>
+                </div>
+                <div class="checkbox">
+                    <label><input type="checkbox" value="" ng-model="memoryOrTime" uib-btn-checkbox>Memmory / Time limit exceeded</label>
+                </div>
+                <div class="checkbox">
+                    <label><input type="checkbox" value="" ng-model="runtimeOrCompliation" uib-btn-checkbox>Runtime / Compliation error</label>
+                </div>
+                <div class="checkbox">
+                    <label><input type="checkbox" value="" ng-model="wrong" uib-btn-checkbox>Wrong answer</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container pagenationContainer">
+        <div class="container">
+            <ul uib-pagination items-per-page="5" total-items="totalItems" ng-model="currentPage" max-size="maxSize" class="pagination-sm paginatationList" boundary-link-numbers="true" rotate="false"></ul>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
